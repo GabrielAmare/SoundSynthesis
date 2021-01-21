@@ -14,3 +14,4 @@ from .WhiteNoise import WhiteNoise
 from .Sine import Sine
 from .HarmonicSerie import HarmonicSerie
 from .Envelop import Envelop
+from .AmplitudeModulation import AmplitudeModulation
