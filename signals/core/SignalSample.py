@@ -1,6 +1,8 @@
+import os
+import sys
 import struct
 import wave
-import playsound  # to install
+from .playsound import playsound
 import matplotlib.pyplot as plt
 
 from .utils import grouper
@@ -71,8 +73,9 @@ class SignalSample:
 
         self.to_wave(filepath, **config)
 
-        playsound.playsound(filepath)
+        playsound(filepath)
 
-        # TODO : os.remove(filepath) doesn't work properly here.
-        #  I guess it's because playsound doesn't close the filestream of something like that.
-        #  The temp.wav file shouldn't remain after the program lifetime.
+        try:
+            os.remove(filepath)
+        except:
+            print("The temp file haven't been deleted properly !", file=sys.stderr)
