@@ -92,7 +92,7 @@ class Signal:
     def __iadd__(self, other):
         return SignalSum(self, other)
 
-    def sample(self, t_min: float = None, t_max: float = None, duration: float = None, n_frames: int = None,
+    def sample(self, t_min: float = 0, t_max: float = None, duration: float = None, n_frames: int = None,
                frame_rate: float = 44100.0):
         time_sample = TimeSample(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate)
         return Sample.from_signal(
@@ -102,21 +102,21 @@ class Signal:
 
     def to_wave(self,
                 filepath: str,
-                t_min: float = None, t_max: float = None, duration: float = None, n_frames: int = None,
+                t_min: float = 0, t_max: float = None, duration: float = None, n_frames: int = None,
                 frame_rate: float = 44100.0,
                 norm_to=None, sampwidth=2, bufsize=2048):
         self.sample(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate) \
             .to_wave(filepath=filepath, norm_to=norm_to, sampwidth=sampwidth, bufsize=bufsize)
 
     def play(self,
-             t_min: float = None, t_max: float = None, duration: float = None, n_frames: int = None,
+             t_min: float = 0, t_max: float = None, duration: float = None, n_frames: int = None,
              frame_rate: float = 44100.0,
              norm_to=None, sampwidth=2, bufsize=2048):
         self.sample(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate) \
             .play(norm_to=norm_to, sampwidth=sampwidth, bufsize=bufsize)
 
     def plot(self,
-             t_min: float = None, t_max: float = None, duration: float = None, n_frames: int = None,
+             t_min: float = 0, t_max: float = None, duration: float = None, n_frames: int = None,
              frame_rate: float = 44100.0,
              title: str = "", xlabel: str = "", ylabel: str = "", export_to: str = None):
         self.sample(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate) \
