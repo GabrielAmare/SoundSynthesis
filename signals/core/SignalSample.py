@@ -3,7 +3,11 @@ import sys
 import struct
 import wave
 from .playsound import playsound
-import matplotlib.pyplot as plt
+
+try:
+    import matplotlib.pyplot as plt
+except:
+    plt = None
 
 from .utils import grouper
 
@@ -30,6 +34,9 @@ class SignalSample:
 
             :param export_to: if you want to export the plot as an image, give it the desired filepath for the image
         """
+        if not plt:
+            raise Exception(f"To use the .plot method you must install `matplotlib` using the command : "
+                            f"pip install matplotlib")
 
         fig, ax = plt.subplots()
         ax.plot(list(self.time_sample), self.Y)
