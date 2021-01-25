@@ -57,8 +57,11 @@ class PeriodicSignal(Signal):
 
 
 class SimpleSignal(PeriodicSignal):
+    """
+        Simple signals are signals which have a frequency param (from which their period can be deduced)
+    """
     def __init__(self, frequency: float):
-        assert frequency != 0, "FrequencySignal.__init__, frequency shall not be 0"
+        assert frequency != 0, "SimpleSignal.__init__, frequency shall not be 0"
         self.frequency = frequency
 
         self.period = 1 / self.frequency
