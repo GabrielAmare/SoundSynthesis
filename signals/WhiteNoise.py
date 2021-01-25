@@ -1,6 +1,6 @@
-from .Signal import Signal
 from math import fabs as abs
 from random import uniform
+from .core import Signal
 
 
 class WhiteNoise(Signal):
@@ -10,6 +10,10 @@ class WhiteNoise(Signal):
         :param amplitude: The maximum amplitude of the signal
         """
         self.amplitude = abs(amplitude)
+
+    @property
+    def period(self):
+        return 0
 
     def __call__(self, t):
         """

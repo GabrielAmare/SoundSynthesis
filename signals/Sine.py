@@ -1,8 +1,8 @@
-from .Signal import Signal
 from math import sin, pi
+from .core import SimpleSignal
 
 
-class Sine(Signal):
+class Sine(SimpleSignal):
     def __init__(self, frequency, amplitude=1.0, phase=0.0):
         """
             Create a sine wave of the form :   S(t) = A * sin(2 pi f t + p)   [where A = amplitude, f = frequency, p = phase, t = time]
@@ -10,9 +10,8 @@ class Sine(Signal):
         :param amplitude: The amplitude of the sine
         :param phase: The phase of the sine
         """
-        assert frequency != 0, "Sine.__init__, frequency shall not be 0"
+        super().__init__(frequency)
         self.amplitude = amplitude  # m
-        self.frequency = frequency  # 1/s
         self.phase = phase  # m (if the phase is a function, it will be called on t when self is called)
 
     def __call__(self, t):

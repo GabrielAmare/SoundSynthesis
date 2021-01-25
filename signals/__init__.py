@@ -8,7 +8,7 @@
     - Envelop
 """
 
-from .Signal import Signal
+from .core import Signal, PeriodicSignal, SignalSum, SimpleSignal
 from .GaussianNoise import GaussianNoise
 from .WhiteNoise import WhiteNoise
 from .Sine import Sine

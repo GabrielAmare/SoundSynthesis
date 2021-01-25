@@ -1,8 +1,8 @@
-from .Signal import Signal, SignalSum
+from .core import PeriodicSignal, SignalSum
 from .Sine import Sine
 
 
-class HarmonicSerie(Signal):
+class HarmonicSerie(PeriodicSignal):
     def __init__(self, base_frequency, number_of_harmonics,
                  harmonics_amplitude_function=None,
                  harmonics_phase_function=None):
@@ -11,13 +11,21 @@ class HarmonicSerie(Signal):
         self.harmonics_amplitude_function = harmonics_amplitude_function
         self.harmonics_phase_function = harmonics_phase_function
 
-        self.signal = SignalSum(*(
+        self.fundamental, *self.harmonics = (
             Sine(
                 frequency=self.frequency_for(harmonic_number),
                 amplitude=self.amplitude_for(harmonic_number),
                 phase=self.phase_for(harmonic_number)
-            ) for harmonic_number in range(1, self.number_of_harmonics + 1)
-        ))
+            )
+            for harmonic_number in range(1, self.number_of_harmonics + 1)
+        )
+
+        self.signal = SignalSum(self.fundamental, *self.harmonics)
+
+    @property
+    def period(self):
+        """The period of an harmonic serie is the period of the fundamental sine"""
+        return self.fundamental.period
 
     def __call__(self, t):
         return self.signal(t)

@@ -1,8 +1,9 @@
-from .Signal import Signal
+from .core import Signal, PeriodicSignal, MathUtils
+from .Sine import Sine
 
 
 class AmplitudeModulation(Signal):
-    def __init__(self, carrier: Signal, carried: Signal, factor: float = 1):
+    def __init__(self, carrier: Sine, carried: Signal, factor: float = 1):
         """
             Create an amplitude modulation
             :param carrier: carrier wave
