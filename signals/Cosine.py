@@ -1,14 +1,14 @@
-from math import sin, tau
+from math import cos, tau
 from .core import SimpleSignal
 
 
-class Sine(SimpleSignal):
+class Cosine(SimpleSignal):
     def __init__(self, frequency, amplitude=1.0, phase=0.0):
         """
-            Create a sine wave of the form :   S(t) = A * sin(2 pi f t + p)   [where A = amplitude, f = frequency, p = phase, t = time]
-        :param frequency: The frequency of the sine
-        :param amplitude: The amplitude of the sine
-        :param phase: The phase of the sine
+            Create a cosine wave of the form :   S(t) = A * cos(2 pi f t + p)   [where A = amplitude, f = frequency, p = phase, t = time]
+        :param frequency: The frequency of the cosine
+        :param amplitude: The amplitude of the cosine
+        :param phase: The phase of the cosine
         """
         super().__init__(frequency)
         self.amplitude = amplitude
@@ -19,10 +19,10 @@ class Sine(SimpleSignal):
             See Signal.__call__ docstring
             >>> help(Signal.__init__)
         """
-        return self.amplitude * sin(tau * self.frequency * t + self.phase)
+        return self.amplitude * cos(tau * self.frequency * t + self.phase)
 
     def __repr__(self):
-        """Displays the sine equation"""
+        """Displays the cosine equation"""
         result = ""
 
         amplitude = round(self.amplitude, 3)
@@ -33,9 +33,9 @@ class Sine(SimpleSignal):
             result += f"{amplitude}*"
 
         if frequency != 1:
-            result += f"sin(2*π*{frequency}*t"
+            result += f"cos(2*π*{frequency}*t"
         else:
-            result += f"sin(2*π*t"
+            result += f"cos(2*π*t"
 
         if isinstance(phase, (int, float)):
             if phase > 0:
