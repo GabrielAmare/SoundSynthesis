@@ -1,8 +1,8 @@
-from signals import *
-import math
 """
     Harmonic serie with noise, sampled, saved and played
 """
+from signals import *
+import math
 
 if __name__ == '__main__':
     # we create the harmonic serie
