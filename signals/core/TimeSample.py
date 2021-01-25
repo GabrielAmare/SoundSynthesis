@@ -1,4 +1,5 @@
 def are_defined(*values):
+    """Used to know if params are defined in the signature"""
     return None not in values
 
 
@@ -7,8 +8,10 @@ class TimeSample:
 
     def __init__(self, t_min=None, t_max=None, duration=None, n_frames=None, frame_rate=None):
         """
-            You have to define at least 2 params of [`t_min`, `t_max`, `duration`] and either `n_frames` or `frame_rate`
-            Or defined `n_frames` and `frame_rate` and one of `t_min` or `t_max`
+            You can :
+                - define at least 2 params of [`t_min`, `t_max`, `duration`] and either `n_frames` or `frame_rate`
+                OR
+                - define `n_frames` and `frame_rate` and one of `t_min` or `t_max`
 
             Here is a list of the accepted signatures :
                 (t_min, t_max, n_frames)
@@ -59,6 +62,8 @@ class TimeSample:
                 self.t_max = t_min + self.duration
             elif are_defined(t_max):
                 self.t_min = t_max - self.duration
+            else:
+                raise Exception(f"Uncomplete definition ! {dict(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate)}")
         else:
             raise Exception(f"Uncomplete definition ! {dict(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate)}")
 
