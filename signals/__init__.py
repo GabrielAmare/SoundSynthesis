@@ -19,6 +19,7 @@ from .Cosine import Cosine
 from .HarmonicSerie import HarmonicSerie
 from .Envelop import Envelop
 from .AmplitudeModulation import AmplitudeModulation
+from .Click import Click
 from .FunctionSignal import FunctionSignal
 
 # metadata
@@ -37,6 +38,7 @@ Here is the different types of signal already implemented in the package :
     - HarmonicSerie
     - Envelop
     - AmplitudeModulation
+    - Click
     - FunctionSignal
 """
 __classifiers__ = [
