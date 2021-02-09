@@ -1,20 +1,17 @@
 from .core import Signal
 
+__authors__ = ["Elie Grinfeder", "Gabriel Amare"]
+
 
 class Click(Signal):
-    def __init__(self, t_min: float, t_max: float, amplitude: float = 1.0):
-        """
-            Create white noise for a random uniform distribution law between [-amplitude, +amplitude]
-        :param amplitude: The maximum amplitude of the signal
-        """
-        self.t_min, self.t_max = min(t_min, t_max), max(t_min, t_max)
+    def __init__(self, duration, amplitude: float = 1.0, phase: float = 1.0):
+        assert duration > 0
+        self.duration = duration
         self.amplitude = abs(amplitude)
+        self.phase = phase
 
     def __call__(self, t):
-        if self.t_min <= t <= self.t_max:
-            return self.amplitude
-        else:
-            return 0
+        return self.amplitude if 0 <= t - self.phase < self.duration else 0
 
     def __repr__(self):
-        return f"{self.amplitude} * ({self.t_min} <= t <= {self.t_max})"
+        return f"{self.amplitude} * ({self.phase} <= t < {self.phase + self.duration})"
