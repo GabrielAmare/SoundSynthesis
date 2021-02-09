@@ -17,7 +17,7 @@ from .FunctionSignal import FunctionSignal
 __author__ = "Gabriel Amare"
 __author_email__ = "gabriel.amare.31@gmail.com"
 __all_authors__ = ["Gabriel Amare", "Elie Grinfeder"]
-__version__ = "1.3"
+__version__ = "1.3.1"
 __url__ = "https://github.com/GabrielAmare/SoundSynthesis"
 __longdescr__ = """
 SoundSynthesis is a little package made to create sound signals from various type of signals

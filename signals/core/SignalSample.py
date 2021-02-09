@@ -79,7 +79,7 @@ class SignalSample:
 
     def play(self, block=True, **config):
         fp = ""
-        while not fp and os.path.exists(fp):
+        while not fp or os.path.exists(fp):
             fp = f"temp_{random.random()}.wav"
 
         try:
