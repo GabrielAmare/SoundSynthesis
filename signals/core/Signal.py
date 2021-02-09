@@ -108,3 +108,11 @@ class SignalSum(Signal):
             return sum(signal(t) for signal in self.signals)
         else:
             return 0
+
+    def i_sample_data(self, time_sample):
+        samples = (signal.i_sample_data(time_sample) for signal in self.signals)
+        for values in zip(*samples):
+            if values:
+                yield sum(values)
+            else:
+                yield 0
