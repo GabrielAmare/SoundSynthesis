@@ -1,16 +1,4 @@
 #!/usr/bin/env python
-"""
-SoundSynthesis is a little package made to create sound signals from various type of signals
-
-Here is the different types of signal already implemented in the package :
-    - GaussianNoise
-    - WhiteNoise
-    - Sine
-    - Cosine
-    - HarmonicSerie
-    - Envelop
-    - AmplitudeModulation
-"""
 from .core import Signal, PeriodicSignal, SignalSum, SimpleSignal
 from .GaussianNoise import GaussianNoise
 from .WhiteNoise import WhiteNoise
