@@ -15,10 +15,6 @@ class Sine(SimpleSignal):
         self.phase = phase
 
     def __call__(self, t):
-        """
-            See Signal.__call__ docstring
-            >>> help(Signal.__init__)
-        """
         return self.amplitude * sin(tau * self.frequency * t + self.phase)
 
     def __repr__(self):
