@@ -3,6 +3,7 @@ import sys
 import struct
 import wave
 import random
+import numpy as np
 from .playsound import playsound
 
 try:
@@ -20,7 +21,7 @@ class SignalSample:
 
     @classmethod
     def from_signal(cls, time_sample, signal):
-        return cls(time_sample=time_sample, Y=[signal(t) for t in time_sample])
+        return cls(time_sample=time_sample, Y=signal.sample_data(time_sample))
 
     def __init__(self, time_sample: TimeSample, Y):
         assert len(time_sample) == len(Y)

@@ -18,6 +18,13 @@ class Signal:
     def __iadd__(self, other):
         return SignalSum(self, other)
 
+    def i_sample_data(self, time_sample):
+        for t in time_sample:
+            yield self(t)
+
+    def sample_data(self, time_sample):
+        return tuple(self.i_sample_data(time_sample))
+
     def sample(self, t_min: float = 0, t_max: float = None, duration: float = None, n_frames: int = None,
                frame_rate: float = 44100.0):
         time_sample = TimeSample(t_min=t_min, t_max=t_max, duration=duration, n_frames=n_frames, frame_rate=frame_rate)
