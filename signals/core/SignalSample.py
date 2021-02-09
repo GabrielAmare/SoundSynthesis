@@ -2,6 +2,7 @@ import os
 import sys
 import struct
 import wave
+import random
 from .playsound import playsound
 
 try:
@@ -75,14 +76,21 @@ class SignalSample:
                 )
                 file.writeframesraw(frames)
 
-    def play(self, **config):
-        filepath = self.__class__.temp_wave_filepath
-
-        self.to_wave(filepath, **config)
-
-        playsound(filepath)
+    def play(self, block=True, **config):
+        fp = ""
+        while not fp and os.path.exists(fp):
+            fp = f"temp_{random.random()}.wav"
 
         try:
-            os.remove(filepath)
+            self.to_wave(fp, **config)
+        except Exception as e:
+            if os.path.exists(fp):
+                os.remove(fp)
+            raise e
+
+        playsound(fp, block=block)
+
+        try:
+            os.remove(fp)
         except:
             print("The temp file haven't been deleted properly !", file=sys.stderr)
