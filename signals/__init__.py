@@ -19,6 +19,7 @@ from .Cosine import Cosine
 from .HarmonicSerie import HarmonicSerie
 from .Envelop import Envelop
 from .AmplitudeModulation import AmplitudeModulation
+from .FunctionSignal import FunctionSignal
 
 # metadata
 __author__ = "Gabriel Amare"
@@ -36,6 +37,7 @@ Here is the different types of signal already implemented in the package :
     - HarmonicSerie
     - Envelop
     - AmplitudeModulation
+    - FunctionSignal
 """
 __classifiers__ = [
     "Topic :: Multimedia :: Sound/Audio :: Sound Synthesis"
