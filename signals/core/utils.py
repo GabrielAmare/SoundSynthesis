@@ -1,13 +1,16 @@
 import itertools
-from functools import reduce
-
-import numpy as np
+from math import cos, sin, tau
 
 
 def grouper(n, iterable, fillvalue=None):
     "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
     args = [iter(iterable)] * n
     return itertools.zip_longest(fillvalue=fillvalue, *args)
+
+
+def trig(frequency, time, amplitude=1.0, phase=0.0):
+    x = tau * frequency * time + phase
+    return amplitude * cos(x), amplitude * sin(x)
 
 
 class MathUtils:
