@@ -47,6 +47,7 @@ class Sine(SimpleSignal):
         return result
 
     def i_sample_data(self, time_sample):
+        """This code is ugly but works 50% faster than the classic i_sample_data"""
         c0, s0 = trig(self.frequency, time_sample.t_min, self.amplitude, self.phase)
 
         dc1, ds1 = trig(self.frequency, 1 * time_sample.frame_width)
