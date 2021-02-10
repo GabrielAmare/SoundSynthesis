@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from .core import Signal, PeriodicSignal, SignalSum, SimpleSignal
+from .core import *
 from .GaussianNoise import GaussianNoise
 from .WhiteNoise import WhiteNoise
 from .Sine import Sine

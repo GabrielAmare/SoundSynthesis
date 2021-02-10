@@ -56,6 +56,9 @@ class Signal:
         self.sample(duration=duration, t_min=t_min, t_max=t_max, n_frames=n_frames, frame_rate=frame_rate) \
             .plot(xlabel=xlabel, ylabel=ylabel, title=title, export_to=export_to)
 
+    __add__ = None
+    __mul__ = None
+
 
 class PeriodicSignal(Signal):
     period: float

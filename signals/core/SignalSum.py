@@ -43,6 +43,6 @@ class SignalSum(Signal):
         samples = (signal.i_sample_data(time_sample) for signal in self.signals)
         for values in zip(*samples):
             if values:
-                yield sum(values)
+                yield reduce(add, values)
             else:
                 yield 0

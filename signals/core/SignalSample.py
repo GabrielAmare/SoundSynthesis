@@ -69,10 +69,18 @@ class SignalSample:
 
             max_amplitude = float(int(bin_size / 2) - 1)
 
+            def bounds(value):
+                if value < -bin_size // 2:
+                    return -bin_size // 2
+                elif value >= bin_size // 2:
+                    return bin_size // 2 - 1
+                else:
+                    return value
+
             for chunk in grouper(bufsize, samples):
                 frames = b''.join(
                     b''.join(
-                        struct.pack('h', int(max_amplitude * sample)) for sample in channels
+                        struct.pack('h', int(bounds(max_amplitude * sample))) for sample in channels
                     ) for channels in chunk if channels is not None
                 )
                 file.writeframesraw(frames)

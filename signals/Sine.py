@@ -63,7 +63,7 @@ class Sine(SimpleSignal):
 
         n = time_sample.n_frames
 
-        while 0 <= n:
+        while 0 < n:
             yield s0
             if n <= 1:
                 return
