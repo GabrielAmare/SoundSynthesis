@@ -23,22 +23,22 @@ class Sine(SimpleSignal):
         result = ""
 
         amplitude = round(self.amplitude, 3)
-        frequency = round(self.frequency, 3)
+        frequency = tau * self.frequency
         phase = round(self.phase, 3)
 
         if amplitude != 1:
             result += f"{amplitude}*"
 
         if frequency != 1:
-            result += f"sin(2*π*{frequency}*t"
+            result += f"sin({frequency}*t"
         else:
-            result += f"sin(2*π*t"
+            result += f"sin(t"
 
         if isinstance(phase, (int, float)):
             if phase > 0:
                 result += f" + {phase})"
             elif phase < 0:
-                result += f" - {phase})"
+                result += f" - {-phase})"
         else:
             result += f" + {phase}"
 

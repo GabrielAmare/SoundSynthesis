@@ -31,7 +31,7 @@ class HarmonicSerie(PeriodicSignal):
         return self.signal(t)
 
     def __repr__(self):
-        return f"HS({self.base_frequency}, {self.number_of_harmonics}, {self.harmonics_amplitude_function})"
+        return repr(self.signal)
 
     def frequency_for(self, harmonic_number):
         return self.base_frequency * harmonic_number
