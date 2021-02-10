@@ -11,6 +11,7 @@ from .Envelop import Envelop
 from .AmplitudeModulation import AmplitudeModulation
 from .FrequencyModulation import FrequencyModulation
 from .Click import Click
+from .ClickTrain import ClickTrain
 from .FunctionSignal import FunctionSignal
 
 # metadata
@@ -34,6 +35,7 @@ Here is the different types of signal already implemented in the package :
     - AmplitudeModulation
     - FrequencyModulation
     - Click
+    - ClickTrain
     - FunctionSignal
 """
 __classifiers__ = [
